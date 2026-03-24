@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Terminal de Mercado</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0b0f14;
+  color: white;
+  font-family: Arial;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 60px 1fr 250px;
+  height: 100vh;
+  gap: 8px;
+  padding: 8px;
+}
+
+.box {
+  background: #11161c;
+  border-radius: 8px;
+}
+
+.topo {
+  grid-column: 1 / 4;
+}
+
+.esquerda {
+  display: grid;
+  gap: 8px;
+}
+
+.direita {
+  display: grid;
+  gap: 8px;
+}
+
+.base {
+  grid-column: 1 / 4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+  <!-- TICKER GLOBAL -->
+  <div class="topo box">
+    <script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+    {
+      "symbols": [
+        {"proName": "FX_IDC:USDBRL", "title": "USD/BRL"},
+        {"proName": "TVC:DXY", "title": "DXY"},
+        {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+        {"proName": "NASDAQ:NDX", "title": "Nasdaq"},
+        {"proName": "CBOE:VIX", "title": "VIX"},
+        {"proName": "BINANCE:BTCUSDT", "title": "BTC"}
+      ],
+      "theme": "dark"
+    }
+    </script>
+  </div>
+
+  <!-- ESQUERDA -->
+  <div class="esquerda">
+    <div class="box" id="dolar"></div>
+    <div class="box" id="dxy"></div>
+    <div class="box" id="juros"></div>
+  </div>
+
+  <!-- CENTRO -->
+  <div class="box" id="principal"></div>
+
+  <!-- DIREITA -->
+  <div class="direita">
+    <div class="box" id="spx"></div>
+    <div class="box" id="nasdaq"></div>
+    <div class="box" id="vix"></div>
+  </div>
+
+  <!-- BASE -->
+  <div class="base box">
+    <iframe src="https://sslecal2.investing.com?importance=3&features=datepicker&countries=32,5&lang=12"
+    width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+
+</div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+
+<script>
+// ESQUERDA
+new TradingView.widget({
+  "container_id": "dolar",
+  "symbol": "FX_IDC:USDBRL",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+
+new TradingView.widget({
+  "container_id": "dxy",
+  "symbol": "TVC:DXY",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+
+new TradingView.widget({
+  "container_id": "juros",
+  "symbol": "TVC:US10Y",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+
+// CENTRO (GRÁFICO PRINCIPAL)
+new TradingView.widget({
+  "container_id": "principal",
+  "symbol": "FX_IDC:USDBRL",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+
+// DIREITA
+new TradingView.widget({
+  "container_id": "spx",
+  "symbol": "FOREXCOM:SPXUSD",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+
+new TradingView.widget({
+  "container_id": "nasdaq",
+  "symbol": "NASDAQ:NDX",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+
+new TradingView.widget({
+  "container_id": "vix",
+  "symbol": "CBOE:VIX",
+  "interval": "5",
+  "theme": "dark",
+  "height": "100%"
+});
+</script>
+
+</body>
+</html>
