@@ -1,117 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Terminal STRD</title>
+import React from "react";
 
-<style>
-body {
-  margin: 0;
-  background: #0b0f14;
-  color: white;
-  font-family: Arial;
+export default function Terminal() {
+  return (
+    <div className="grid grid-cols-12 grid-rows-6 gap-2 h-screen p-2 bg-black text-white">
+      {/* Calendário Econômico */}
+      <div className="col-span-3 row-span-3 bg-gray-900 rounded-2xl p-2">
+        <iframe
+          src="https://sslecal2.forexprostools.com/?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=3&features=datepicker,timezone&countries=5,17,32,6,37&calType=week"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+      </div>
+
+      {/* Gráfico Principal */}
+      <div className="col-span-6 row-span-3 bg-gray-900 rounded-2xl p-2">
+        <iframe
+          src="https://www.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&interval=60&theme=dark"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+      </div>
+
+      {/* Dashboard Global */}
+      <div className="col-span-3 row-span-3 bg-gray-900 rounded-2xl p-2">
+        <iframe
+          src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=FOREXCOM:SPXUSD&theme=dark"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+      </div>
+
+      {/* Notícias */}
+      <div className="col-span-3 row-span-2 bg-gray-900 rounded-2xl p-2">
+        <iframe
+          src="https://www.tradingview.com/widgetembed/?frameElementId=news_widget&theme=dark"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+      </div>
+
+      {/* Mercados Principais */}
+      <div className="col-span-6 row-span-2 bg-gray-900 rounded-2xl p-2">
+        <iframe
+          src="https://www.tradingview.com/markets/"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+      </div>
+
+      {/* Juros */}
+      <div className="col-span-3 row-span-2 bg-gray-900 rounded-2xl p-2">
+        <iframe
+          src="https://www.tradingview.com/widgetembed/?symbol=TVC:US02Y,TVC:US05Y,TVC:US10Y&theme=dark"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+        />
+      </div>
+    </div>
+  );
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
-  grid-template-rows: 60px 1fr 300px;
-  height: 100vh;
-  gap: 8px;
-  padding: 8px;
-}
-
-.box {
-  background: #11161c;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.topo {
-  grid-column: 1 / 4;
-}
-</style>
-</head>
-
-<body>
-
-<div class="grid">
-
-<!-- TICKER -->
-<div class="topo box">
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
-{
-  "symbols": [
-    {"proName": "FOREXCOM:SPXUSD", "title": "US500"},
-    {"proName": "FOREXCOM:DJI", "title": "US30"},
-    {"proName": "BMFBOVESPA:IBOV", "title": "IBOV"},
-    {"proName": "CBOE:VIX", "title": "VIX"},
-    {"proName": "TVC:DXY", "title": "DXY"},
-    {"proName": "BINANCE:BTCUSDT", "title": "BTC"},
-    {"proName": "OANDA:XAUUSD", "title": "OURO"},
-    {"proName": "TVC:UKOIL", "title": "BRENT"}
-  ],
-  "colorTheme": "dark"
-}
-</script>
-</div>
-
-<!-- CALENDÁRIO -->
-<div class="box">
-<iframe src="https://sslecal2.investing.com?importance=3&features=datepicker&countries=32,5&lang=12"></iframe>
-</div>
-
-<!-- GRÁFICO PRINCIPAL -->
-<div class="box" id="grafico"></div>
-
-<!-- DASHBOARD GLOBAL -->
-<div class="box">
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js">
-{
-  "colorTheme": "dark",
-  "tabs": [
-    {
-      "title": "Américas",
-      "symbols": [
-        {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
-        {"s": "BMFBOVESPA:IBOV", "d": "IBOV"}
-      ]
-    },
-    {
-      "title": "Europa",
-      "symbols": [
-        {"s": "INDEX:DAX", "d": "DAX"}
-      ]
-    },
-    {
-      "title": "Ásia",
-      "symbols": [
-        {"s": "INDEX:NKY", "d": "Nikkei"}
-      ]
-    }
-  ]
-}
-</script>
-</div>
-
-<!-- NOTÍCIAS -->
-<div class="box">
-<iframe src="https://www.investing.com/news/"></iframe>
-</div>
-
-</div>
-
-<script src="https://s3.tradingview.com/tv.js"></script>
-
-<script>
-new TradingView.widget({
-  "container_id": "grafico",
-  "symbol": "FX_IDC:USDBRL",
-  "interval": "5",
-  "theme": "dark",
-  "height": "100%"
-});
-</script>
-
-</body>
-</html>
