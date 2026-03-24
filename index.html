@@ -1,67 +1,75 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Financeiro</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      height: 100vh;
+      padding: 8px;
+    }
+    .box {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .calendar { grid-column: 1; grid-row: 1; }
+    .chart { grid-column: 2; grid-row: 1; }
+    .dashboard { grid-column: 3; grid-row: 1; }
+    .news { grid-column: 1; grid-row: 2; }
+    .markets { grid-column: 2; grid-row: 2; }
+    .rates { grid-column: 3; grid-row: 2; }
+  </style>
+</head>
+<body>
+  <div class="grid">
 
-export default function Terminal() {
-  return (
-    <div className="grid grid-cols-12 grid-rows-6 gap-2 h-screen p-2 bg-black text-white">
-      {/* Calendário Econômico */}
-      <div className="col-span-3 row-span-3 bg-gray-900 rounded-2xl p-2">
-        <iframe
-          src="https://sslecal2.forexprostools.com/?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=3&features=datepicker,timezone&countries=5,17,32,6,37&calType=week"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        />
-      </div>
-
-      {/* Gráfico Principal */}
-      <div className="col-span-6 row-span-3 bg-gray-900 rounded-2xl p-2">
-        <iframe
-          src="https://www.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&interval=60&theme=dark"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        />
-      </div>
-
-      {/* Dashboard Global */}
-      <div className="col-span-3 row-span-3 bg-gray-900 rounded-2xl p-2">
-        <iframe
-          src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=FOREXCOM:SPXUSD&theme=dark"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        />
-      </div>
-
-      {/* Notícias */}
-      <div className="col-span-3 row-span-2 bg-gray-900 rounded-2xl p-2">
-        <iframe
-          src="https://www.tradingview.com/widgetembed/?frameElementId=news_widget&theme=dark"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        />
-      </div>
-
-      {/* Mercados Principais */}
-      <div className="col-span-6 row-span-2 bg-gray-900 rounded-2xl p-2">
-        <iframe
-          src="https://www.tradingview.com/markets/"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        />
-      </div>
-
-      {/* Juros */}
-      <div className="col-span-3 row-span-2 bg-gray-900 rounded-2xl p-2">
-        <iframe
-          src="https://www.tradingview.com/widgetembed/?symbol=TVC:US02Y,TVC:US05Y,TVC:US10Y&theme=dark"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-        />
-      </div>
+    <!-- Calendário Econômico -->
+    <div class="box calendar">
+      <iframe src="https://sslecal2.forexprostools.com/?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=3&features=datepicker,timezone&countries=5,17,32,6,37&calType=week"></iframe>
     </div>
-  );
-}
+
+    <!-- Gráfico Principal -->
+    <div class="box chart">
+      <iframe src="https://www.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&interval=60&theme=dark"></iframe>
+    </div>
+
+    <!-- Dashboard Global -->
+    <div class="box dashboard">
+      <iframe src="https://www.tradingview.com/widgetembed/?symbol=FOREXCOM:SPXUSD&theme=dark"></iframe>
+    </div>
+
+    <!-- Notícias -->
+    <div class="box news">
+      <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=news_widget&theme=dark"></iframe>
+    </div>
+
+    <!-- Mercados -->
+    <div class="box markets">
+      <iframe src="https://www.tradingview.com/markets/"></iframe>
+    </div>
+
+    <!-- Juros -->
+    <div class="box rates">
+      <iframe src="https://www.tradingview.com/widgetembed/?symbol=TVC:US02Y,TVC:US05Y,TVC:US10Y&theme=dark"></iframe>
+    </div>
+
+  </div>
+</body>
+</html>
